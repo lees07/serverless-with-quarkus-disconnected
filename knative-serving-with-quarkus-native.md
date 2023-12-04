@@ -245,17 +245,17 @@ __  ____  __  _____   ___  __ ____  ______
 ```
 
 If you like to use .Net to develop applications, please reference:  
-> .Net apps on rhel reference: https://access.redhat.com/documentation/en-us/net/7.0/html-single/getting_started_with_.net_on_rhel_8/index
-> .Net native apps reference: https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/?tabs=net7%2Cwindows
+> .Net apps on rhel reference: https://access.redhat.com/documentation/en-us/net/7.0/html-single/getting_started_with_.net_on_rhel_8/index  
+> .Net native apps reference: https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/?tabs=net7%2Cwindows  
 
 
 ## Reference
-[Install Serverless Operator](https://docs.openshift.com/serverless/1.30/install/install-serverless-operator.html)
-[Install Knative serving](https://docs.openshift.com/serverless/1.30/install/installing-knative-serving.html)
-[Create serverless application](https://docs.openshift.com/serverless/1.30/knative-serving/getting-started/serverless-applications.html)
-[Quarkus Development](https://quarkus.io/)
-[Quarkus Native](https://quarkus.io/guides/building-native-image)
-[Mandrel for Quarkus](https://github.com/graalvm/mandrel/releases)
+[Install Serverless Operator](https://docs.openshift.com/serverless/1.30/install/install-serverless-operator.html)  
+[Install Knative serving](https://docs.openshift.com/serverless/1.30/install/installing-knative-serving.html)  
+[Create serverless application](https://docs.openshift.com/serverless/1.30/knative-serving/getting-started/serverless-applications.html)  
+[Quarkus Development](https://quarkus.io/)  
+[Quarkus Native](https://quarkus.io/guides/building-native-image)  
+[Mandrel for Quarkus](https://github.com/graalvm/mandrel/releases)  
 
 > problem: can't delete latest revision of ksvc by "kn revision delete <revision name>", why?  
 
