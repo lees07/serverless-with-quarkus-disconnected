@@ -147,7 +147,7 @@ At first, a local registry pull secret must be created and linked to a service a
 oc get secret quay-registry -o yaml -n test 
 apiVersion: v1
 data:
-  .dockerconfigjson: eyJhdXRocyI6eyJodHRwczovL3JlZ2lzdHJ5Lm9jcDQuZXhhbXBsZS5jb20vIjp7InVzZXJuYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IlJlZGhhdCEyMyIsImF1dGgiOiJkR1Z6ZERFNlVtVmthR0YwSVRJeiJ9fX0=
+  .dockerconfigjson: ...
 kind: Secret
 ...
 type: kubernetes.io/dockerconfigjson
@@ -162,6 +162,36 @@ kind: ServiceAccount
 ...
 secrets:
 - name: default-dockercfg-hwdxn
+```
+
+Second, the func directory with func.yaml file should be copied into disconnected environment. "kn" and "oc" tools are ready.  
+```
+cat quarkus-func-test/func.yaml 
+specVersion: 0.35.0
+name: quarkus-func-test
+runtime: quarkus
+registry: registry.ocp4.example.com/demo
+image: registry.ocp4.example.com/demo/quarkus-func-test:latest
+created: 2024-02-26T17:01:38.548983305+08:00
+build:
+  builder: s2i
+  buildEnvs:
+  - name: BP_JVM_VERSION
+    value: "17"
+  - name: BP_NATIVE_IMAGE
+    value: "true"
+  - name: BP_MAVEN_BUILT_ARTIFACT
+    value: func.yaml target/native-sources/*
+  - name: BP_MAVEN_BUILD_ARGUMENTS
+    value: package -DskipTests=true -Dmaven.javadoc.skip=true -Dquarkus.package.type=native-sources
+  - name: BP_NATIVE_IMAGE_BUILD_ARGUMENTS_FILE
+    value: native-image.args
+  - name: BP_NATIVE_IMAGE_BUILT_ARTIFACT
+    value: '*-runner.jar'
+  pvcSize: 256Mi
+
+oc project
+Using project "test" on server "https://api.ocp4.example.com:6443".
 ```
 
 And then deploy the func using kn command:  
